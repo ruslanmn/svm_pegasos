@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/svm.dir/main.cpp.o  -o svm 
