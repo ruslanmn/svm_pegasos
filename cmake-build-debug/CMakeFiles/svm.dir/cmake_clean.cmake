@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/svm.dir/main.cpp.o"
+  "CMakeFiles/svm.dir/test.cpp.o"
   "svm.pdb"
   "svm"
 )

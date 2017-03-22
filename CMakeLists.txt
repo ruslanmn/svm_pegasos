@@ -3,5 +3,5 @@ project(svm)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp test.cpp)
 add_executable(svm ${SOURCE_FILES})

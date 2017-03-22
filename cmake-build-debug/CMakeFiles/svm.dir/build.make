@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/kmeansfan/clion-2016.3.4/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/svmfan/clion-2016.3.4/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/kmeansfan/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
+RM = /home/svmfan/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kmeansfan/CLionProjects/svm
+CMAKE_SOURCE_DIR = /home/svmfan/CLionProjects/svm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kmeansfan/CLionProjects/svm/cmake-build-debug
+CMAKE_BINARY_DIR = /home/svmfan/CLionProjects/svm/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/svm.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/svm.dir/flags.make
 
 CMakeFiles/svm.dir/main.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kmeansfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svm.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/main.cpp.o -c /home/kmeansfan/CLionProjects/svm/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svm.dir/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/main.cpp.o -c /home/svmfan/CLionProjects/svm/main.cpp
 
 CMakeFiles/svm.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kmeansfan/CLionProjects/svm/main.cpp > CMakeFiles/svm.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/main.cpp > CMakeFiles/svm.dir/main.cpp.i
 
 CMakeFiles/svm.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kmeansfan/CLionProjects/svm/main.cpp -o CMakeFiles/svm.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/main.cpp -o CMakeFiles/svm.dir/main.cpp.s
 
 CMakeFiles/svm.dir/main.cpp.o.requires:
 
@@ -81,17 +81,43 @@ CMakeFiles/svm.dir/main.cpp.o.provides: CMakeFiles/svm.dir/main.cpp.o.requires
 CMakeFiles/svm.dir/main.cpp.o.provides.build: CMakeFiles/svm.dir/main.cpp.o
 
 
+CMakeFiles/svm.dir/test.cpp.o: CMakeFiles/svm.dir/flags.make
+CMakeFiles/svm.dir/test.cpp.o: ../test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/svm.dir/test.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/test.cpp.o -c /home/svmfan/CLionProjects/svm/test.cpp
+
+CMakeFiles/svm.dir/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/test.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/test.cpp > CMakeFiles/svm.dir/test.cpp.i
+
+CMakeFiles/svm.dir/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/test.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/test.cpp -o CMakeFiles/svm.dir/test.cpp.s
+
+CMakeFiles/svm.dir/test.cpp.o.requires:
+
+.PHONY : CMakeFiles/svm.dir/test.cpp.o.requires
+
+CMakeFiles/svm.dir/test.cpp.o.provides: CMakeFiles/svm.dir/test.cpp.o.requires
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/test.cpp.o.provides.build
+.PHONY : CMakeFiles/svm.dir/test.cpp.o.provides
+
+CMakeFiles/svm.dir/test.cpp.o.provides.build: CMakeFiles/svm.dir/test.cpp.o
+
+
 # Object files for target svm
 svm_OBJECTS = \
-"CMakeFiles/svm.dir/main.cpp.o"
+"CMakeFiles/svm.dir/main.cpp.o" \
+"CMakeFiles/svm.dir/test.cpp.o"
 
 # External object files for target svm
 svm_EXTERNAL_OBJECTS =
 
 svm: CMakeFiles/svm.dir/main.cpp.o
+svm: CMakeFiles/svm.dir/test.cpp.o
 svm: CMakeFiles/svm.dir/build.make
 svm: CMakeFiles/svm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kmeansfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable svm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable svm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/svm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +126,7 @@ CMakeFiles/svm.dir/build: svm
 .PHONY : CMakeFiles/svm.dir/build
 
 CMakeFiles/svm.dir/requires: CMakeFiles/svm.dir/main.cpp.o.requires
+CMakeFiles/svm.dir/requires: CMakeFiles/svm.dir/test.cpp.o.requires
 
 .PHONY : CMakeFiles/svm.dir/requires
 
@@ -108,6 +135,6 @@ CMakeFiles/svm.dir/clean:
 .PHONY : CMakeFiles/svm.dir/clean
 
 CMakeFiles/svm.dir/depend:
-	cd /home/kmeansfan/CLionProjects/svm/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kmeansfan/CLionProjects/svm /home/kmeansfan/CLionProjects/svm /home/kmeansfan/CLionProjects/svm/cmake-build-debug /home/kmeansfan/CLionProjects/svm/cmake-build-debug /home/kmeansfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/svmfan/CLionProjects/svm/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/svmfan/CLionProjects/svm /home/svmfan/CLionProjects/svm /home/svmfan/CLionProjects/svm/cmake-build-debug /home/svmfan/CLionProjects/svm/cmake-build-debug /home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/svm.dir/depend
 
