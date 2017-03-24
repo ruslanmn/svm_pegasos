@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/svm.dir/main.cpp.o"
-  "CMakeFiles/svm.dir/test.cpp.o"
+  "CMakeFiles/svm.dir/mnist_data_loader.cpp.o"
+  "CMakeFiles/svm.dir/byteorder_helper.cpp.o"
   "svm.pdb"
   "svm"
 )

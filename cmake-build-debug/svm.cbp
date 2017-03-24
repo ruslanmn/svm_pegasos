@@ -84,10 +84,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/svmfan/CLionProjects/svm/byteorder_helper.cpp">
+			<Option target="svm"/>
+		</Unit>
+		<Unit filename="/home/svmfan/CLionProjects/svm/byteorder_helper.h">
+			<Option target="svm"/>
+		</Unit>
 		<Unit filename="/home/svmfan/CLionProjects/svm/main.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/svmfan/CLionProjects/svm/test.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_loader.cpp">
+			<Option target="svm"/>
+		</Unit>
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_loader.h">
 			<Option target="svm"/>
 		</Unit>
 		<Unit filename="/home/svmfan/CLionProjects/svm/CMakeLists.txt">

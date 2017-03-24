@@ -123,6 +123,33 @@ svm/fast:
 	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/build
 .PHONY : svm/fast
 
+byteorder_helper.o: byteorder_helper.cpp.o
+
+.PHONY : byteorder_helper.o
+
+# target to build an object file
+byteorder_helper.cpp.o:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.o
+.PHONY : byteorder_helper.cpp.o
+
+byteorder_helper.i: byteorder_helper.cpp.i
+
+.PHONY : byteorder_helper.i
+
+# target to preprocess a source file
+byteorder_helper.cpp.i:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.i
+.PHONY : byteorder_helper.cpp.i
+
+byteorder_helper.s: byteorder_helper.cpp.s
+
+.PHONY : byteorder_helper.s
+
+# target to generate assembly for a file
+byteorder_helper.cpp.s:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.s
+.PHONY : byteorder_helper.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -150,32 +177,32 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-test.o: test.cpp.o
+mnist_data_loader.o: mnist_data_loader.cpp.o
 
-.PHONY : test.o
+.PHONY : mnist_data_loader.o
 
 # target to build an object file
-test.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/test.cpp.o
-.PHONY : test.cpp.o
+mnist_data_loader.cpp.o:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.o
+.PHONY : mnist_data_loader.cpp.o
 
-test.i: test.cpp.i
+mnist_data_loader.i: mnist_data_loader.cpp.i
 
-.PHONY : test.i
+.PHONY : mnist_data_loader.i
 
 # target to preprocess a source file
-test.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/test.cpp.i
-.PHONY : test.cpp.i
+mnist_data_loader.cpp.i:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.i
+.PHONY : mnist_data_loader.cpp.i
 
-test.s: test.cpp.s
+mnist_data_loader.s: mnist_data_loader.cpp.s
 
-.PHONY : test.s
+.PHONY : mnist_data_loader.s
 
 # target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/test.cpp.s
-.PHONY : test.cpp.s
+mnist_data_loader.cpp.s:
+	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.s
+.PHONY : mnist_data_loader.cpp.s
 
 # Help Target
 help:
@@ -186,12 +213,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... svm"
+	@echo "... byteorder_helper.o"
+	@echo "... byteorder_helper.i"
+	@echo "... byteorder_helper.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... mnist_data_loader.o"
+	@echo "... mnist_data_loader.i"
+	@echo "... mnist_data_loader.s"
 .PHONY : help
 
 
