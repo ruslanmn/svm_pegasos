@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/svmfan/CLionProjects/svm/byteorder_helper.cpp" "/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/byteorder_helper.cpp.o"
   "/home/svmfan/CLionProjects/svm/main.cpp" "/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/main.cpp.o"
   "/home/svmfan/CLionProjects/svm/mnist_data_loader.cpp" "/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/mnist_data_loader.cpp.o"
+  "/home/svmfan/CLionProjects/svm/svm.cpp" "/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/svm.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

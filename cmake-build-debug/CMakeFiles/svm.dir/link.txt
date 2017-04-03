@@ -1,1 +1,1 @@
-/usr/bin/c++   -g   CMakeFiles/svm.dir/main.cpp.o CMakeFiles/svm.dir/mnist_data_loader.cpp.o CMakeFiles/svm.dir/byteorder_helper.cpp.o  -o svm 
+/usr/bin/c++   -g   CMakeFiles/svm.dir/main.cpp.o CMakeFiles/svm.dir/mnist_data_loader.cpp.o CMakeFiles/svm.dir/byteorder_helper.cpp.o CMakeFiles/svm.dir/svm.cpp.o  -o svm 

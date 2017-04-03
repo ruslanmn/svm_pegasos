@@ -62,6 +62,12 @@ uint8_t* load_labels(const char* labels_filename , uint32_t* size) {
     uint8_t* labels_data = (uint8_t*) malloc((*size) * sizeof(uint8_t));
 
     fread( labels_data, sizeof(uint8_t) * (*size), 1, labels_file);
+    for(int i = 0; i < *size; i++) {
+        if ( labels_data[i] == 4 )
+            labels_data[i] == 1;
+        else
+            labels_data[i] == -1;
+    }
     fclose(labels_file);
     return labels_data;
 }
