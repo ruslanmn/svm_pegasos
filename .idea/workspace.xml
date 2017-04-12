@@ -12,14 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a29a40f3-d77d-42d0-9a6a-e4448ec72c71" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/svm" afterPath="$PROJECT_DIR$/cmake-build-debug/svm" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/svm" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/svm.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/svm.dir/depend.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnist_data_loader.cpp" afterPath="$PROJECT_DIR$/mnist_data_loader.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mnist_data_loader.h" afterPath="$PROJECT_DIR$/mnist_data_loader.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/svm.cpp" afterPath="$PROJECT_DIR$/svm.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/svm.h" afterPath="$PROJECT_DIR$/svm.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,8 +70,8 @@
       <file leaf-file-name="mnist_data_loader.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mnist_data_loader.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="77" column="32" lean-forward="false" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+            <state relative-caret-position="166">
+              <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -81,11 +79,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="cmake_install.cmake" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mnist_data_loader.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mnist_data_loader.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+            <state relative-caret-position="291">
+              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -143,8 +151,8 @@
         <option value="$PROJECT_DIR$/byteorder_helper.h" />
         <option value="$PROJECT_DIR$/svm.h" />
         <option value="$PROJECT_DIR$/svm.cpp" />
-        <option value="$PROJECT_DIR$/mnist_data_loader.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/mnist_data_loader.h" />
         <option value="$PROJECT_DIR$/mnist_data_loader.cpp" />
       </list>
     </option>
@@ -448,6 +456,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a29a40f3-d77d-42d0-9a6a-e4448ec72c71" name="Default" comment="" />
@@ -474,7 +485,8 @@
       <workItem from="1491936344810" duration="6548000" />
       <workItem from="1491943596280" duration="2536000" />
       <workItem from="1491985650847" duration="20101000" />
-      <workItem from="1492026369077" duration="139000" />
+      <workItem from="1492026369077" duration="330000" />
+      <workItem from="1492026714962" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="data loader&#10;">
       <created>1490214881481</created>
@@ -511,11 +523,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491244837520</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=" - Added MnistDataLoader class&#10; - Added kernel support&#10; &#10; Still works in One-vs-Others way">
+      <created>1492026679847</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1492026679847</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64606000" />
+    <option name="totallyTimeSpent" value="65136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1442" height="873" extended-state="6" />
@@ -551,7 +570,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="data loader&#10;" />
     <MESSAGE value="data loader&#10;works" />
-    <option name="LAST_COMMIT_MESSAGE" value="data loader&#10;works" />
+    <MESSAGE value=" - Added MnistDataLoader class&#10; - Added kernel support&#10; &#10; Still works in One-vs-Others way" />
+    <option name="LAST_COMMIT_MESSAGE" value=" - Added MnistDataLoader class&#10; - Added kernel support&#10; &#10; Still works in One-vs-Others way" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -914,13 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a.cpp" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -962,14 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mnist_data_loader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1456">
@@ -980,10 +985,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mnist_data_loader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mnist_data_loader.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="77" column="32" lean-forward="false" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        <state relative-caret-position="166">
+          <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>

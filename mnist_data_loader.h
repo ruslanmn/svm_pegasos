@@ -26,6 +26,8 @@ private:
     size_t weight_size_;
     size_t train_data_size_;
     size_t test_data_size_;
+    uint8_t** load_images(const char* images_filename, uint32_t* size);
+    uint8_t* load_labels(const char* labels_filename, uint32_t* size);
 public:
     MnistDataLoader();
     ~MnistDataLoader();
@@ -39,7 +41,5 @@ public:
                          const char* test_labels_filename);
 };
 
-uint8_t** load_images(const char* images_filename, uint32_t* size, size_t* weight_size);
-uint8_t* load_labels(const char* labels_filename, uint32_t* size);
 
 #endif //SVM_MNIST_DATA_LOADER_H
