@@ -3,14 +3,20 @@
 //
 
 #include "svm.h"
+#include <iostream>
 #include <cstring>
-#include <cstdio>
 
-double dot(double* x, double* w, size_t size) {
+using namespace std;
+
+void copy(double** x, size_t weight_size, size_t data_size, double** new_x) {
+
+}
+
+double dot(double* x, double* b, size_t size) {
     double s = 0;
     while( size > 0 ) {
         size--;
-        s += x[size] * w[size];
+        s += x[size] * b[size];
     }
 
     return s;
@@ -23,9 +29,7 @@ void produce_vector(double* v, size_t size, double h) {
     }
 }
 
-svm::svm(size_t weight_size) {
-    this->weight_size = weight_size;
-    w = (double*)malloc(sizeof(double) * weight_size);
+svm::svm() {
 }
 
 void int_vector_to_double(uint8_t* int_x, double* new_x, size_t size) {
@@ -43,31 +47,67 @@ void add_to_vector(double* dest, double* source, size_t size) {
 }
 
 
-svm::~svm() {
-    delete[] w;
-}
-
-void svm::fit(uint8_t** images, uint8_t* labels, size_t data_set_size, double h, size_t T) {
-    memset(w, 0, weight_size * sizeof(double));
-    double s;
-    double x[weight_size];
-    for(int t = 1; t <= T; t++) {
-        int i = rand() % data_set_size;
-        uint8_t* int_x = images[i];
-        int_vector_to_double(int_x, x, weight_size);
-        uint8_t y = labels[i];
-        double q = 1/(h*t);
-        s = dot(x, w, weight_size);
-        produce_vector(w, weight_size, 1-q*h);
-        if (y * s < 1) {
-            produce_vector(x, weight_size, q * y);
-            add_to_vector(w, x, weight_size);
-        }
+void svm::free_memory() {
+    if (v != NULL) {
+        free(v);
+        v = NULL;
+    }
+    if (x != NULL) {
+        free(x);
+        v = NULL;
     }
 }
 
-double svm::predict(uint8_t* image) {
-    double x[weight_size];
-    int_vector_to_double(image, x, weight_size);
-    return dot(x, w, weight_size);
+svm::~svm() {
+    free_memory();
+}
+
+void svm::set(double** x, size_t weight_size, size_t data_size, double (*kernel)(double*, double*, size_t)) {
+    this->data_size = data_size;
+    this->weight_size = weight_size;
+    this->kernel = kernel;
+
+    this->x = (double**) malloc(sizeof(double*) * data_size);
+    for(int i = 0; i < data_size; i++) {
+        this->x[i] = (double*) malloc(sizeof(double) * weight_size);
+        memcpy(this->x[i], x[i], weight_size * sizeof(double));
+    }
+}
+
+void svm::fit(double** x, size_t weight_size, double* y, size_t data_size, double (*kernel)(double*, double*, size_t), double h, size_t T) {
+    free_memory();
+    set(x, weight_size, data_size, kernel);
+
+    double s;
+    size_t a[data_size] = {0};
+    double q;
+
+
+    for(int t = 1; t <= T; t++) {
+        int i = rand() % data_size;
+
+        q = 1/(h*t);
+        s = 0;
+        cout << t << endl;
+        for(int j = 0; j < data_size; j++)
+            if( j != i ) {
+                s += a[j] * y[j] * kernel(x[i], x[j], weight_size);
+            }
+
+        if (y[i] * q * s < 1) {
+            a[i] += 1;
+        }
+    }
+
+    v = (double*)malloc(sizeof(double) * data_size);
+    for(int j = 0; j < data_size; j++) {
+        v[j] = q * a[j] * y[j];
+    }
+}
+
+double svm::predict(double* x) {
+    double res = 0;
+    for(int i = 0; i < data_size; i++)
+        res += v[i] * this->kernel(x, this->x[i], weight_size);
+    return res;
 }

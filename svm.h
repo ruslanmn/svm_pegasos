@@ -9,14 +9,20 @@
 #include <cstdint>
 
 class svm {
-    size_t weight_size;
-    double* w;
+    size_t data_size, weight_size;
+    double* v = NULL;
+    double** x = NULL;
 
+    double (*kernel)(double*, double*, size_t);
+    void free_memory();
+    void set(double **x, size_t weight_size, size_t data_size, double (*kernel)(double *, double *, size_t));
 public:
-    svm(size_t weight_size);
-    void fit(uint8_t** images, uint8_t* labels, size_t data_set_size, double h, size_t T);
-    double predict(uint8_t* image);
+    svm();
+    void fit(double** x, size_t weight_size, double* y, size_t data_size, double (*kernel)(double*, double*, size_t), double h, size_t T);
+    double predict(double* x);
     ~svm();
+
+
 };
 
 
