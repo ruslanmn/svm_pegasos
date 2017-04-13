@@ -10,11 +10,14 @@
 
 class MnistDataClassifier {
 private:
-    MnistDataLoader mld;
+    MnistDataLoader& mld;
     size_t number_sizes[10] = {0};
     double** train_images_[10];
 public:
-    
+    MnistDataClassifier(const char* train_images_filename,
+                         const char* train_labels_filename,
+                         const char* test_images_filename,
+                         const char* test_labels_filename);
 };
 
 

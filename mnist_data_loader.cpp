@@ -67,8 +67,7 @@ uint8_t ***MnistDataLoader::classify_images() {
         number_sizes[train_labels_[i]]++;
     }
 
-    for(size_t i=0; i < 10; i++)
-        classified_train_images_ = malloc()
+
 
 }
 
