@@ -17,7 +17,7 @@ private:
     uint8_t** test_images_;
     uint8_t* test_labels_;
 public:
-    uint8_t **get_train_images() const;
+    uint8_t **get_train_images() const;;
     uint8_t *get_train_labels() const;
     uint8_t **get_test_images() const;
     uint8_t *get_test_labels() const;

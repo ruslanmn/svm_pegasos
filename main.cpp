@@ -33,8 +33,8 @@ int main() {
     srand(time(NULL));
 
     MnistDataLoader mdl;
-    mdl.load_mnist_data("/home/svmfan/Desktop/images.data", "/home/svmfan/Desktop/labels.data",
-                                      "/home/svmfan/Desktop/test-images.data", "/home/svmfan/Desktop/test-labels.data");
+    mdl.load_mnist_data("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
+                                      "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data");
 
 
     int win = 0;

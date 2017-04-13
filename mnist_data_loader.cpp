@@ -62,6 +62,16 @@ uint8_t** MnistDataLoader::load_images(const char* images_filename, uint32_t* si
 	return images_data;
 }
 
+uint8_t ***MnistDataLoader::classify_images() {
+    for(size_t i = 0; i < train_data_size_; i++) {
+        number_sizes[train_labels_[i]]++;
+    }
+
+    for(size_t i=0; i < 10; i++)
+        classified_train_images_ = malloc()
+
+}
+
 uint8_t* MnistDataLoader::load_labels(const char* labels_filename , uint32_t* size) {
     FILE* labels_file = fopen(labels_filename, "rb");
 
@@ -73,12 +83,6 @@ uint8_t* MnistDataLoader::load_labels(const char* labels_filename , uint32_t* si
 
     fread( labels_data, sizeof(uint8_t) * (*size), 1, labels_file);
 
-    for(int i = 0; i < (*size); i++) {
-        if ( labels_data[i] == 0 )
-            labels_data[i] = 1;
-        else
-            labels_data[i] = 0;
-    }
     fclose(labels_file);
     return labels_data;
 }
@@ -108,6 +112,8 @@ MnistDataLoader::MnistDataLoader() {
 
 MnistDataLoader::~MnistDataLoader() {
     if (train_images_ != NULL) {
+        for(size_t i = 0; i < train_data_size_)
+            free(train_images_[i]);
         free(train_images_);
         train_images_ = NULL;
     }
@@ -116,6 +122,8 @@ MnistDataLoader::~MnistDataLoader() {
         train_labels_ = NULL;
     }
     if (test_images_ != NULL) {
+        for(size_t i = 0; i < test_data_size_)
+            free(test_images_[i]);
         free(test_images_);
         test_images_ = NULL;
     }
