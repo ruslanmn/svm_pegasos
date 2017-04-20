@@ -1,6 +1,6 @@
 #include <iostream>
 #include "mnist_data_loader.h"
-#include "svm.h"
+#include "SVM.h"
 
 
 using namespace std;
@@ -29,7 +29,7 @@ double kernel(double* x, double* b, size_t size) {
 }
 
 
-int main() {
+int main2() {
     srand(time(NULL));
 
     MnistDataLoader mdl;
@@ -41,7 +41,7 @@ int main() {
 
     size_t weight_size = mdl.get_weight_size();
 
-    svm s;
+    SVM s;
 
     int n = 1000;
 

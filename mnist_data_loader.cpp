@@ -62,14 +62,6 @@ uint8_t** MnistDataLoader::load_images(const char* images_filename, uint32_t* si
 	return images_data;
 }
 
-uint8_t ***MnistDataLoader::classify_images() {
-    for(size_t i = 0; i < train_data_size_; i++) {
-        number_sizes[train_labels_[i]]++;
-    }
-
-
-
-}
 
 uint8_t* MnistDataLoader::load_labels(const char* labels_filename , uint32_t* size) {
     FILE* labels_file = fopen(labels_filename, "rb");
@@ -111,7 +103,7 @@ MnistDataLoader::MnistDataLoader() {
 
 MnistDataLoader::~MnistDataLoader() {
     if (train_images_ != NULL) {
-        for(size_t i = 0; i < train_data_size_)
+        for(size_t i = 0; i < train_data_size_; i++)
             free(train_images_[i]);
         free(train_images_);
         train_images_ = NULL;
@@ -121,7 +113,7 @@ MnistDataLoader::~MnistDataLoader() {
         train_labels_ = NULL;
     }
     if (test_images_ != NULL) {
-        for(size_t i = 0; i < test_data_size_)
+        for(size_t i = 0; i < test_data_size_; i++)
             free(test_images_[i]);
         free(test_images_);
         test_images_ = NULL;

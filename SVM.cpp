@@ -2,7 +2,7 @@
 // Created by svmfan on 3/25/17.
 //
 
-#include "svm.h"
+#include "SVM.h"
 #include <iostream>
 #include <cstring>
 
@@ -29,7 +29,7 @@ void produce_vector(double* v, size_t size, double h) {
     }
 }
 
-svm::svm() {
+SVM::SVM() {
 }
 
 void int_vector_to_double(uint8_t* int_x, double* new_x, size_t size) {
@@ -47,7 +47,7 @@ void add_to_vector(double* dest, double* source, size_t size) {
 }
 
 
-void svm::free_memory() {
+void SVM::free_memory() {
     if (v != NULL) {
         free(v);
         v = NULL;
@@ -58,11 +58,11 @@ void svm::free_memory() {
     }
 }
 
-svm::~svm() {
+SVM::~SVM() {
     free_memory();
 }
 
-void svm::set(double** x, size_t weight_size, size_t data_size, double (*kernel)(double*, double*, size_t)) {
+void SVM::set(double** x, size_t weight_size, size_t data_size, double (*kernel)(double*, double*, size_t)) {
     this->data_size = data_size;
     this->weight_size = weight_size;
     this->kernel = kernel;
@@ -74,7 +74,7 @@ void svm::set(double** x, size_t weight_size, size_t data_size, double (*kernel)
     }
 }
 
-void svm::fit(double** x, size_t weight_size, double* y, size_t data_size, double (*kernel)(double*, double*, size_t), double h, size_t T) {
+void SVM::fit(double** x, size_t weight_size, double* y, size_t data_size, double (*kernel)(double*, double*, size_t), double h, size_t T) {
     free_memory();
     set(x, weight_size, data_size, kernel);
 
@@ -105,7 +105,7 @@ void svm::fit(double** x, size_t weight_size, double* y, size_t data_size, doubl
     }
 }
 
-double svm::predict(double* x) {
+double SVM::predict(double* x) {
     double res = 0;
     for(int i = 0; i < data_size; i++)
         res += v[i] * this->kernel(x, this->x[i], weight_size);

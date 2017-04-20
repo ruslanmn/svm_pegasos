@@ -8,110 +8,110 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/kmeansfan/CLionProjects/svm/cmake-build-debug"/>
+				<Option working_dir="/home/svmfan/CLionProjects/svm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/kmeansfan/CLionProjects/svm/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/kmeansfan/CLionProjects/svm/cmake-build-debug"/>
+				<Option working_dir="/home/svmfan/CLionProjects/svm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/svmfan/CLionProjects/svm/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="svm">
-				<Option output="/home/kmeansfan/CLionProjects/svm/cmake-build-debug/svm" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kmeansfan/CLionProjects/svm/cmake-build-debug"/>
+				<Option output="/home/svmfan/CLionProjects/svm/cmake-build-debug/svm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/svmfan/CLionProjects/svm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 svm"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 svm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="svm/fast">
-				<Option output="/home/kmeansfan/CLionProjects/svm/cmake-build-debug/svm" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/kmeansfan/CLionProjects/svm/cmake-build-debug"/>
+				<Option output="/home/svmfan/CLionProjects/svm/cmake-build-debug/svm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/svmfan/CLionProjects/svm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 svm/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/kmeansfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 svm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/svmfan/CLionProjects/svm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/byteorder_helper.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/SVM.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/byteorder_helper.h">
+		<Unit filename="/home/svmfan/CLionProjects/svm/SVM.h">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/main.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/byteorder_helper.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/mnist_data_classifier.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/byteorder_helper.h">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/mnist_data_classifier.h">
+		<Unit filename="/home/svmfan/CLionProjects/svm/main.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/mnist_data_loader.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_classifier.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/mnist_data_loader.h">
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_classifier.h">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/svm.cpp">
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_loader.cpp">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/svm.h">
+		<Unit filename="/home/svmfan/CLionProjects/svm/mnist_data_loader.h">
 			<Option target="svm"/>
 		</Unit>
-		<Unit filename="/home/kmeansfan/CLionProjects/svm/CMakeLists.txt">
+		<Unit filename="/home/svmfan/CLionProjects/svm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
