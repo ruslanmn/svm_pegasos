@@ -12,6 +12,7 @@ class SVM {
     size_t data_size, weight_size;
     double* v = NULL;
     double** x = NULL;
+    double* w;
 
     double (*kernel)(double*, double*, size_t);
     void free_memory();

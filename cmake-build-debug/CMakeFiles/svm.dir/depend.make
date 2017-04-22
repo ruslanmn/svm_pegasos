@@ -8,6 +8,7 @@ CMakeFiles/svm.dir/byteorder_helper.cpp.o: ../byteorder_helper.cpp
 
 CMakeFiles/svm.dir/main.cpp.o: ../SVM.h
 CMakeFiles/svm.dir/main.cpp.o: ../main.cpp
+CMakeFiles/svm.dir/main.cpp.o: ../mnist_data_classifier.h
 CMakeFiles/svm.dir/main.cpp.o: ../mnist_data_loader.h
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../SVM.h

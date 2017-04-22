@@ -7,6 +7,7 @@
 #include "SVM.h"
 #include <iostream>
 
+using namespace std;
 
 void convert_to_double(uint8_t* src, double* dst, size_t size) {
     for( size_t i = 0; i < size; i++)
@@ -53,14 +54,17 @@ MnistDataClassifier::MnistDataClassifier(const char* train_images_filename,
 
 void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, double (*kernel)(double*, double*, size_t)) {
     int n = 10;
-    svm_classes = new SVM*[n];
+    svm_classes = new SVM**[n];
     size_t weight_size = mdl.get_weight_size();
+#pragma omp parallel for
     for(int i = 0; i < n; i++) {
-        svm_classes[i] = new SVM[n];
+        svm_classes[i] = new SVM*[n];
+#pragma omp parallel for
         for(int j = 0; j < n ; j++) {
             if (j <= i)
                 svm_classes[i][j] = NULL;
             else {
+                svm_classes[i][j] = new SVM();
                 size_t size = number_sizes[i] + number_sizes[j];
                 double* x[size];
                 memcpy(x, train_images_[i], number_sizes[i] * sizeof(double*));
@@ -69,17 +73,19 @@ void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, double (
                 double y[size];
                 for(size_t f = 0; f < number_sizes[i]; f++)
                     y[f] = 1;
-                for(size_t l = number_sizes[i]; i < size; l++)
+                for(size_t l = number_sizes[i]; l < size; l++)
                     y[l] = -1;
 
-                svm_classes[i][j].fit(x, weight_size, y, size, kernel, h, batch_size);
+                cout << "fitting " << i << "-" << j << endl;
+                svm_classes[i][j]->fit(x, weight_size, y, size, kernel, h, batch_size);
+                cout << "finished" << endl;
             }
 
         }
     }
 }
 
-size_t MnistDataClassifier::predict(uint8_t* x_uint) {
+uint8_t MnistDataClassifier::predict(uint8_t* x_uint) {
     size_t n = 10;
     size_t weight_size = mdl.get_weight_size();
     double x_double[weight_size];
@@ -88,9 +94,10 @@ size_t MnistDataClassifier::predict(uint8_t* x_uint) {
     size_t counts[n] = {0};
     double res;
 
+
     for(size_t i = 0; i < n; i++)
         for(size_t j = i + 1; j < n; j++) {
-            res = svm_classes[i][j].predict(x_double);
+            res = svm_classes[i][j]->predict(x_double);
             if( res >= 1 )
                 counts[i]++;
             else if (res <= -1)

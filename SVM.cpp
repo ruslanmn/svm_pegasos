@@ -88,7 +88,6 @@ void SVM::fit(double** x, size_t weight_size, double* y, size_t data_size, doubl
 
         q = 1/(h*t);
         s = 0;
-        cout << t << endl;
         for(int j = 0; j < data_size; j++)
             if( j != i ) {
                 s += a[j] * y[j] * kernel(x[i], x[j], weight_size);
@@ -103,11 +102,21 @@ void SVM::fit(double** x, size_t weight_size, double* y, size_t data_size, doubl
     for(int j = 0; j < data_size; j++) {
         v[j] = q * a[j] * y[j];
     }
+
+    w = (double*) calloc(weight_size, sizeof(double));
+    double cur_x[weight_size];
+    for(int i = 0; i < data_size; i++) {
+        memcpy(cur_x, x[i], weight_size * sizeof(double));
+        produce_vector(cur_x, weight_size, v[i]);
+        add_to_vector(w, cur_x, weight_size);
+    }
+
 }
 
 double SVM::predict(double* x) {
     double res = 0;
-    for(int i = 0; i < data_size; i++)
-        res += v[i] * this->kernel(x, this->x[i], weight_size);
+    //for(int i = 0; i < data_size; i++)
+      //  res += v[i] * this->kernel(x, this->x[i], weight_size);
+    res = dot(x, w, weight_size);
     return res;
 }
