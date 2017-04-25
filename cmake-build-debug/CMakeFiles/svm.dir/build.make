@@ -43,10 +43,10 @@ RM = /home/svmfan/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/svmfan/CLionProjects/svm
+CMAKE_SOURCE_DIR = /home/svmfan/CLionProjects/svm_openaac
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/svmfan/CLionProjects/svm/cmake-build-debug
+CMAKE_BINARY_DIR = /home/svmfan/CLionProjects/svm_openaac/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/svm.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/svm.dir/flags.make
 
 CMakeFiles/svm.dir/main.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svm.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/main.cpp.o -c /home/svmfan/CLionProjects/svm/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/svm.dir/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/main.cpp.o -c /home/svmfan/CLionProjects/svm_openaac/main.cpp
 
 CMakeFiles/svm.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/main.cpp > CMakeFiles/svm.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm_openaac/main.cpp > CMakeFiles/svm.dir/main.cpp.i
 
 CMakeFiles/svm.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/main.cpp -o CMakeFiles/svm.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm_openaac/main.cpp -o CMakeFiles/svm.dir/main.cpp.s
 
 CMakeFiles/svm.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/svm.dir/main.cpp.o.provides.build: CMakeFiles/svm.dir/main.cpp.o
 
 CMakeFiles/svm.dir/mnist_data_loader.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/mnist_data_loader.cpp.o: ../mnist_data_loader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/svm.dir/mnist_data_loader.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/mnist_data_loader.cpp.o -c /home/svmfan/CLionProjects/svm/mnist_data_loader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/svm.dir/mnist_data_loader.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/mnist_data_loader.cpp.o -c /home/svmfan/CLionProjects/svm_openaac/mnist_data_loader.cpp
 
 CMakeFiles/svm.dir/mnist_data_loader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/mnist_data_loader.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/mnist_data_loader.cpp > CMakeFiles/svm.dir/mnist_data_loader.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm_openaac/mnist_data_loader.cpp > CMakeFiles/svm.dir/mnist_data_loader.cpp.i
 
 CMakeFiles/svm.dir/mnist_data_loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/mnist_data_loader.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/mnist_data_loader.cpp -o CMakeFiles/svm.dir/mnist_data_loader.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm_openaac/mnist_data_loader.cpp -o CMakeFiles/svm.dir/mnist_data_loader.cpp.s
 
 CMakeFiles/svm.dir/mnist_data_loader.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/svm.dir/mnist_data_loader.cpp.o.provides.build: CMakeFiles/svm.dir/mn
 
 CMakeFiles/svm.dir/byteorder_helper.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/byteorder_helper.cpp.o: ../byteorder_helper.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/svm.dir/byteorder_helper.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/byteorder_helper.cpp.o -c /home/svmfan/CLionProjects/svm/byteorder_helper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/svm.dir/byteorder_helper.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/byteorder_helper.cpp.o -c /home/svmfan/CLionProjects/svm_openaac/byteorder_helper.cpp
 
 CMakeFiles/svm.dir/byteorder_helper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/byteorder_helper.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/byteorder_helper.cpp > CMakeFiles/svm.dir/byteorder_helper.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm_openaac/byteorder_helper.cpp > CMakeFiles/svm.dir/byteorder_helper.cpp.i
 
 CMakeFiles/svm.dir/byteorder_helper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/byteorder_helper.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/byteorder_helper.cpp -o CMakeFiles/svm.dir/byteorder_helper.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm_openaac/byteorder_helper.cpp -o CMakeFiles/svm.dir/byteorder_helper.cpp.s
 
 CMakeFiles/svm.dir/byteorder_helper.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/svm.dir/byteorder_helper.cpp.o.provides.build: CMakeFiles/svm.dir/byt
 
 CMakeFiles/svm.dir/SVM.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/SVM.cpp.o: ../SVM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/svm.dir/SVM.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/SVM.cpp.o -c /home/svmfan/CLionProjects/svm/SVM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/svm.dir/SVM.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/SVM.cpp.o -c /home/svmfan/CLionProjects/svm_openaac/SVM.cpp
 
 CMakeFiles/svm.dir/SVM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/SVM.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/SVM.cpp > CMakeFiles/svm.dir/SVM.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm_openaac/SVM.cpp > CMakeFiles/svm.dir/SVM.cpp.i
 
 CMakeFiles/svm.dir/SVM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/SVM.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/SVM.cpp -o CMakeFiles/svm.dir/SVM.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm_openaac/SVM.cpp -o CMakeFiles/svm.dir/SVM.cpp.s
 
 CMakeFiles/svm.dir/SVM.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/svm.dir/SVM.cpp.o.provides.build: CMakeFiles/svm.dir/SVM.cpp.o
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: CMakeFiles/svm.dir/flags.make
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../mnist_data_classifier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/svm.dir/mnist_data_classifier.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/mnist_data_classifier.cpp.o -c /home/svmfan/CLionProjects/svm/mnist_data_classifier.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/svm.dir/mnist_data_classifier.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/svm.dir/mnist_data_classifier.cpp.o -c /home/svmfan/CLionProjects/svm_openaac/mnist_data_classifier.cpp
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/svm.dir/mnist_data_classifier.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm/mnist_data_classifier.cpp > CMakeFiles/svm.dir/mnist_data_classifier.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/svmfan/CLionProjects/svm_openaac/mnist_data_classifier.cpp > CMakeFiles/svm.dir/mnist_data_classifier.cpp.i
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/svm.dir/mnist_data_classifier.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm/mnist_data_classifier.cpp -o CMakeFiles/svm.dir/mnist_data_classifier.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/svmfan/CLionProjects/svm_openaac/mnist_data_classifier.cpp -o CMakeFiles/svm.dir/mnist_data_classifier.cpp.s
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o.requires:
 
@@ -195,7 +195,7 @@ svm: CMakeFiles/svm.dir/SVM.cpp.o
 svm: CMakeFiles/svm.dir/mnist_data_classifier.cpp.o
 svm: CMakeFiles/svm.dir/build.make
 svm: CMakeFiles/svm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable svm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable svm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/svm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -216,6 +216,6 @@ CMakeFiles/svm.dir/clean:
 .PHONY : CMakeFiles/svm.dir/clean
 
 CMakeFiles/svm.dir/depend:
-	cd /home/svmfan/CLionProjects/svm/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/svmfan/CLionProjects/svm /home/svmfan/CLionProjects/svm /home/svmfan/CLionProjects/svm/cmake-build-debug /home/svmfan/CLionProjects/svm/cmake-build-debug /home/svmfan/CLionProjects/svm/cmake-build-debug/CMakeFiles/svm.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/svmfan/CLionProjects/svm_openaac/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/svmfan/CLionProjects/svm_openaac /home/svmfan/CLionProjects/svm_openaac /home/svmfan/CLionProjects/svm_openaac/cmake-build-debug /home/svmfan/CLionProjects/svm_openaac/cmake-build-debug /home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles/svm.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/svm.dir/depend
 

@@ -39,11 +39,12 @@ int main() {
                             0.1, 300, kernel);
 
 
+
     uint8_t** images = mdc.mdl.get_test_images();
     uint8_t* labels = mdc.mdl.get_test_labels();
     size_t test_data_size = mdc.mdl.get_test_data_size();
     size_t correct_count = 0;
-
+    correct_count = 0;
 #pragma omp parallel for
     for(size_t i = 0; i < test_data_size; i++) {
         if( mdc.predict(images[i]) == labels[i] )
