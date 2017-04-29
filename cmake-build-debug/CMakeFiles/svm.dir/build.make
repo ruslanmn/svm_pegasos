@@ -194,6 +194,7 @@ svm: CMakeFiles/svm.dir/byteorder_helper.cpp.o
 svm: CMakeFiles/svm.dir/SVM.cpp.o
 svm: CMakeFiles/svm.dir/mnist_data_classifier.cpp.o
 svm: CMakeFiles/svm.dir/build.make
+svm: /usr/lib/x86_64-linux-gnu/libOpenCL.so
 svm: CMakeFiles/svm.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/svmfan/CLionProjects/svm_openaac/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable svm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/svm.dir/link.txt --verbose=$(VERBOSE)
