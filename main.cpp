@@ -35,30 +35,48 @@ double kernel(double* x, double* b, size_t size) {
 }
 
 
-int main2() {
+int main() {
     srand(time(NULL));
+    cl_platform_id platform_id;
+    clGetPlatformIDs(1, &platform_id, NULL);
 
-    /*MnistDataClassifier mdc("/home/svmfan/MNIST Data/images.data", "/home/svmfan/MNIST Data/labels.data",
+
+
+    const char* source = "__kernel void square(__global float* input, __global float* output, int N)\n"
+            "{\n"
+            "    int i = get_global_id(0);\n"
+            "    if ( i < N )\n"
+            "       output[i] = input[i] * input[i];\n"
+            "N = 0;\n"
+            "}\n";
+
+    // Get the first GPU device associated with the platform
+    cl_device_id device_id;
+    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, NULL);
+
+    cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, NULL);
+
+    MnistDataClassifier mdc("/home/svmfan/MNIST Data/images.data", "/home/svmfan/MNIST Data/labels.data",
                                       "/home/svmfan/MNIST Data/test-images.data", "/home/svmfan/MNIST Data/test-labels.data",
-                            0.1, 300, kernel);
+                            0.1, 1000, context, device_id);
 
 
 
-    uint8_t** images = mdc.mdl.get_test_images();
+    uint8_t* images = mdc.mdl.get_test_images();
     uint8_t* labels = mdc.mdl.get_test_labels();
     size_t test_data_size = mdc.mdl.get_test_data_size();
     size_t correct_count = 0;
     correct_count = 0;
 #pragma omp parallel for
     for(size_t i = 0; i < test_data_size; i++) {
-        if( mdc.predict(images[i]) == labels[i] )
+        if( mdc.predict(&images[i * mdc.mdl.get_weight_size()]) == labels[i] )
             correct_count++;
         cout << i << endl;
     }
 
     cout << correct_count << "/" << test_data_size << endl;
 
-    */
+
 
 #if defined(_OPENMP)
     cout << "hello";
@@ -71,7 +89,7 @@ int main2() {
 
 
 
-int main() {
+int main2() {
     cl_platform_id platform_id;
     clGetPlatformIDs(1, &platform_id, NULL);
 
@@ -107,16 +125,16 @@ int main() {
 
 
     size_t n = 99999999;
-    float* a = (float*) malloc(sizeof(float) * n);
-    float* b = (float*) malloc(sizeof(float) * n);
+    cl_float* a = (cl_float*) malloc(sizeof(cl_float) * n);
+    cl_float* b = (cl_float*) malloc(sizeof(cl_float) * n);
 
     for(int i = 0; i < n; i++)
         a[i] = rand() % 1000;
 
 
     cl_command_queue cmd_queue = clCreateCommandQueueWithProperties(context, device_id, 0, NULL);
-    cl_mem a_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(float) * n, a, NULL);
-    cl_mem b_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float) * n, NULL, NULL);
+    cl_mem a_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_float) * n, a, NULL);
+    cl_mem b_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_float) * n, NULL, NULL);
 
 
 
@@ -144,14 +162,14 @@ int main() {
     if (err != CL_SUCCESS )
         cout << "BAD" << endl;
 
-    clEnqueueReadBuffer(cmd_queue, b_buffer, CL_TRUE, 0, sizeof(float) * n, b, 0, NULL, NULL);
+    clEnqueueReadBuffer(cmd_queue, b_buffer, CL_TRUE, 0, sizeof(cl_float) * n, b, 0, NULL, NULL);
     cout << (clock() - begin) << endl;
 
-    cout << "b[24] = " << b[24] << ", a[24] = " << a[24] << endl;
+    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
 
     begin = clock();
     for(int i = 0; i < n; i++)
         b[i] = a[i] * a[i];
     cout << (clock() - begin) << endl;
-    cout << "b[24] = " << b[24] << ", a[24] = " << a[24] << endl;
+    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
 }

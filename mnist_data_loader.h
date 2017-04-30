@@ -12,21 +12,21 @@
 
 class MnistDataLoader {
 private:
-    uint8_t** train_images_;
+    uint8_t* train_images_;
     uint8_t* train_labels_;
-    uint8_t** test_images_;
+    uint8_t* test_images_;
     uint8_t* test_labels_;
 public:
-    uint8_t **get_train_images() const;;
+    uint8_t *get_train_images() const;;
     uint8_t *get_train_labels() const;
-    uint8_t **get_test_images() const;
+    uint8_t *get_test_images() const;
     uint8_t *get_test_labels() const;
 
 private:
     size_t weight_size_;
     size_t train_data_size_;
     size_t test_data_size_;
-    uint8_t** load_images(const char* images_filename, uint32_t* size);
+    uint8_t* load_images(const char* images_filename, uint32_t* size);
     uint8_t* load_labels(const char* labels_filename, uint32_t* size);
 public:
     MnistDataLoader();

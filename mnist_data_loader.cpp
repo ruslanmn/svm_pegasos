@@ -30,7 +30,7 @@ void MnistDataLoader::load_mnist_data(const char* train_images_filename,
 
 }
 
-uint8_t** MnistDataLoader::load_images(const char* images_filename, uint32_t* size) {
+uint8_t* MnistDataLoader::load_images(const char* images_filename, uint32_t* size) {
 	FILE* images_file = fopen(images_filename, "rb");
 
 	uint32_t magic;
@@ -44,20 +44,17 @@ uint8_t** MnistDataLoader::load_images(const char* images_filename, uint32_t* si
 
     weight_size_ = (rows_size*columns_size);
 
-	uint8_t** images_data = (uint8_t**) malloc(*size * sizeof(uint8_t*));
+    size_t imgs_size = *size * weight_size_;
+    size_t imgs_byte_size = imgs_size * sizeof(uint8_t);
 
-	for(uint32_t image_index = 0; image_index < *size; image_index++) {
-		images_data[image_index] = (uint8_t*) malloc(weight_size_*sizeof(uint8_t));
-        fread( images_data[image_index], sizeof(uint8_t) * weight_size_, 1, images_file);
-	}
-
+	uint8_t* images_data = (uint8_t*) malloc(imgs_byte_size);
+    fread( images_data, imgs_byte_size, 1, images_file);
 
 	fclose(images_file);
 
-    for(int i = 0; i < *size; i++)
-        for(int j = 0; j < weight_size_; j++)
-            if(images_data[i][j] != 0)
-                images_data[i][j] = 1;
+    for(int i = 0; i < imgs_size; i++)
+            if(images_data[i] != 0)
+                images_data[i] = 1;
 
 	return images_data;
 }
@@ -103,8 +100,6 @@ MnistDataLoader::MnistDataLoader() {
 
 MnistDataLoader::~MnistDataLoader() {
     if (train_images_ != NULL) {
-        for(size_t i = 0; i < train_data_size_; i++)
-            free(train_images_[i]);
         free(train_images_);
         train_images_ = NULL;
     }
@@ -113,8 +108,6 @@ MnistDataLoader::~MnistDataLoader() {
         train_labels_ = NULL;
     }
     if (test_images_ != NULL) {
-        for(size_t i = 0; i < test_data_size_; i++)
-            free(test_images_[i]);
         free(test_images_);
         test_images_ = NULL;
     }
@@ -124,7 +117,7 @@ MnistDataLoader::~MnistDataLoader() {
     }
 }
 
-uint8_t **MnistDataLoader::get_train_images() const {
+uint8_t *MnistDataLoader::get_train_images() const {
     return train_images_;
 }
 
@@ -132,7 +125,7 @@ uint8_t *MnistDataLoader::get_train_labels() const {
     return train_labels_;
 }
 
-uint8_t **MnistDataLoader::get_test_images() const {
+uint8_t *MnistDataLoader::get_test_images() const {
     return test_images_;
 }
 

@@ -7,19 +7,22 @@
 
 #include <cstdlib>
 #include <cstdint>
+#include <CL/cl.h>
 
 class SVM {
-    size_t data_size, weight_size;
+    cl_uint data_size, weight_size;
     double* v = NULL;
-    double** x = NULL;
+    cl_double* x = NULL;
     double* w;
 
-    double (*kernel)(double*, double*, size_t);
+    cl_context context;
+    cl_device_id device_id;
+
     void free_memory();
-    void set(double **x, size_t weight_size, size_t data_size, double (*kernel)(double *, double *, size_t));
+    void set(cl_double *x, uint weight_size, uint data_size);
 public:
-    SVM();
-    void fit(double** x, size_t weight_size, double* y, size_t data_size, double (*kernel)(double*, double*, size_t), double h, size_t T);
+    SVM(cl_context context, cl_device_id device_id);
+    int fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size, cl_double h, cl_uint T);
     double predict(double* x);
     ~SVM();
 

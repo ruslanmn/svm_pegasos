@@ -20,11 +20,12 @@ MnistDataClassifier::MnistDataClassifier(const char* train_images_filename,
                                          const char* test_labels_filename,
                                          double h,
                                          size_t batch_size,
-                                         double (*kernel)(double*, double*, size_t)) {
+                                         cl_context context,
+                                         cl_device_id device_id) {
 
     mdl.load_mnist_data(train_images_filename, train_labels_filename, test_images_filename, test_labels_filename);
 
-    uint8_t** images = mdl.get_train_images();
+    uint8_t* images = mdl.get_train_images();
     uint8_t* labels = mdl.get_train_labels();
     size_t data_size = mdl.get_train_data_size();
     size_t weight_size = mdl.get_weight_size();
@@ -33,9 +34,7 @@ MnistDataClassifier::MnistDataClassifier(const char* train_images_filename,
         number_sizes[labels[i]]++;
 
     for(size_t i = 0; i < 10; i++) {
-        train_images_[i] = (double**) malloc(sizeof(double*) * number_sizes[i]);
-        for(size_t j = 0; j < number_sizes[i]; j++)
-            train_images_[i][j] = (double*)malloc(sizeof(double) * weight_size);
+        train_images_[i] = (double*) malloc(sizeof(double) * weight_size * number_sizes[i]);
     }
 
     size_t imagex_indices[10] = {0};
@@ -43,16 +42,16 @@ MnistDataClassifier::MnistDataClassifier(const char* train_images_filename,
     for(size_t i = 0; i < data_size; i++) {
         uint8_t number = labels[i];
         image_index = imagex_indices[number];
-        convert_to_double(images[i], train_images_[number][image_index], weight_size);
+        convert_to_double(&images[i * weight_size], &train_images_[number][image_index * weight_size], weight_size);
         imagex_indices[number]++;
     }
 
 
-    load_svm_classes(h, batch_size, kernel);
+    load_svm_classes(h, batch_size, context, device_id);
 }
 
 
-void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, double (*kernel)(double*, double*, size_t)) {
+void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, cl_context context, cl_device_id device_id) {
     int n = 10;
     svm_classes = new SVM**[n];
     size_t weight_size = mdl.get_weight_size();
@@ -64,11 +63,11 @@ void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, double (
             if (j <= i)
                 svm_classes[i][j] = NULL;
             else {
-                svm_classes[i][j] = new SVM();
+                svm_classes[i][j] = new SVM(context, device_id);
                 size_t size = number_sizes[i] + number_sizes[j];
-                double* x[size];
-                memcpy(x, train_images_[i], number_sizes[i] * sizeof(double*));
-                memcpy(&x[number_sizes[i]], train_images_[j], number_sizes[j] * sizeof(double*));
+                double* x = (double*) malloc( size * weight_size * sizeof(double) );
+                memcpy(x, train_images_[i], number_sizes[i] * weight_size * sizeof(double));
+                memcpy(&x[number_sizes[i] * weight_size], train_images_[j], number_sizes[j] * weight_size * sizeof(double));
 
                 double y[size];
                 for(size_t f = 0; f < number_sizes[i]; f++)
@@ -77,7 +76,7 @@ void MnistDataClassifier::load_svm_classes(double h, size_t batch_size, double (
                     y[l] = -1;
 
                 cout << "fitting " << i << "-" << j << endl;
-                svm_classes[i][j]->fit(x, weight_size, y, size, kernel, h, batch_size);
+                svm_classes[i][j]->fit(x, weight_size, y, size, h, batch_size);
                 cout << "finished" << endl;
             }
 
