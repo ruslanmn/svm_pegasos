@@ -9,12 +9,8 @@
 
 using namespace std;
 
-void copy(double** x, size_t weight_size, size_t data_size, double** new_x) {
-
-}
-
-double dot(double* x, double* b, size_t size) {
-    double s = 0;
+float dot(float* x, float* b, size_t size) {
+    float s = 0;
     while( size > 0 ) {
         size--;
         s += x[size] * b[size];
@@ -23,7 +19,7 @@ double dot(double* x, double* b, size_t size) {
     return s;
 }
 
-void produce_vector(double* v, size_t size, double h) {
+void produce_vector(float* v, size_t size, float h) {
     while( size > 0 ) {
         size--;
         v[size] *= h;
@@ -35,14 +31,14 @@ SVM::SVM(cl_context context, cl_device_id device_id) {
     this->device_id = device_id;
 }
 
-void int_vector_to_double(uint8_t* int_x, double* new_x, size_t size) {
+void int_vector_to_float(uint8_t* int_x, float* new_x, size_t size) {
     while( size > 0 ) {
         size--;
         new_x[size] = int_x[size];
     }
 }
 
-void add_to_vector(double* dest, double* source, size_t size) {
+void add_to_vector(float* dest, float* source, size_t size) {
     while( size > 0 ) {
         size--;
         dest[size] += source[size];
@@ -65,21 +61,22 @@ SVM::~SVM() {
     free_memory();
 }
 
-void SVM::set(cl_double* x, uint weight_size, uint data_size) {
+void SVM::set(cl_float* x, uint weight_size, uint data_size) {
     this->data_size = data_size;
     this->weight_size = weight_size;
     this->x = x;
 }
 
 
-int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size, cl_double h, cl_uint T) {
+int SVM::fit(cl_float* x, cl_uint weight_size, cl_float* y, cl_uint data_size, cl_float h, cl_uint T) {
     free_memory();
     set(x, weight_size, data_size);
 
     cl_uint a[data_size] = {0};
 
-    const char* src = "double kernel_func(__global double* x, __global double* b, size_t size) {\n"
-            "    double s = 0;\n"
+    const char* src =
+            "float kernel_func(__global float* x, __global float* b, size_t size) {\n"
+            "    float s = 0;\n"
             "    while( size > 0 ) {\n"
             "        size--;\n"
             "        s += x[size] * b[size];\n"
@@ -89,7 +86,7 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
             "}\n"
             "\n"
             "\n"
-            "__kernel void fit(__global uint* indices, uint T, __global uint* a, __global double* x, uint weight_size, __global double* y, uint data_size, double h) {\n"
+            "__kernel void fit(__global uint* indices, uint T, __global uint* a, __global float* x, uint weight_size, __global float* y, uint data_size, float h) {\n"
             "    uint id = get_global_id(0);\n"
             "\n"
             "    if (id >= T)\n"
@@ -98,8 +95,8 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
             "    uint t =  id + 1;\n"
             "    uint i = indices[id];\n"
             "\n"
-            "    double q = 1/(h*t);\n"
-            "    double s = 0;\n"
+            "    float q = 1/(h*t);\n"
+            "    float s = 0;\n"
             "\n"
             "    for(int j = 0; j < data_size; j++)\n"
             "     if( j != i ) {\n"
@@ -111,7 +108,7 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
             "    }\n"
             "}\n";
 
-    cl_command_queue cmd_queue = clCreateCommandQueueWithProperties(context, device_id, 0, NULL);
+    cl_command_queue cmd_queue = clCreateCommandQueue(context, device_id, 0, NULL);
 
     cl_program program = clCreateProgramWithSource(context, 1, &src, NULL, NULL);
 
@@ -124,17 +121,21 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
     }
 
     cl_kernel opencl_kernel = clCreateKernel(program, "fit", NULL);
-
+    size_t total_size = 0;
+    total_size += sizeof(cl_uint) * data_size;
     cl_mem a_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_uint) * data_size, a, NULL);
-    cl_mem x_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_double) * weight_size * data_size, x, NULL);
-    cl_mem y_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_double) * data_size, x, NULL);
+    total_size += sizeof(cl_float) * weight_size * data_size;
+    cl_mem x_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_float) * weight_size * data_size, x, NULL);
+    total_size += sizeof(cl_float) * data_size;
+    cl_mem y_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_float) * data_size, x, NULL);
 
     cl_uint indices[T];
-    for(int t = 0; t < T; t++)
+    for(size_t t = 0; t < T; t++)
         indices[t] = rand() % data_size;
 
+    total_size += sizeof(cl_uint) * T;
     cl_mem indices_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_uint) * T, indices, NULL);
-
+    cout << total_size;
     clSetKernelArg(opencl_kernel, 0, sizeof(cl_mem), &indices_buffer);
     clSetKernelArg(opencl_kernel, 1, sizeof(cl_uint), &T);
     clSetKernelArg(opencl_kernel, 2, sizeof(cl_mem), &a_buffer);
@@ -142,9 +143,9 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
     clSetKernelArg(opencl_kernel, 4, sizeof(cl_uint), &weight_size);
     clSetKernelArg(opencl_kernel, 5, sizeof(cl_mem), &y_buffer);
     clSetKernelArg(opencl_kernel, 6, sizeof(cl_uint), &data_size);
-    clSetKernelArg(opencl_kernel, 7, sizeof(cl_double), &h);
+    clSetKernelArg(opencl_kernel, 7, sizeof(cl_float), &h);
 
-    size_t localWorkSize = 256;
+    size_t localWorkSize = 32;
     size_t numWorkGroups = (T + localWorkSize - 1) / localWorkSize;
     size_t globalWorkSize = numWorkGroups * localWorkSize;
 
@@ -162,16 +163,16 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
     clReleaseMemObject(y_buffer);
 
 
-    double q = 1/(h*T);
-    v = (double*)malloc(sizeof(double) * data_size);
-    for(int j = 0; j < data_size; j++) {
+    float q = 1/(h*T);
+    v = (float*)malloc(sizeof(float) * data_size);
+    for(size_t j = 0; j < data_size; j++) {
         v[j] = q * a[j] * y[j];
     }
 
-    w = (double*) calloc(weight_size, sizeof(double));
-    double cur_x[weight_size];
-    for(int i = 0; i < data_size; i++) {
-        memcpy(cur_x, &x[i * weight_size], weight_size * sizeof(double));
+    w = (float*) calloc(weight_size, sizeof(float));
+    float cur_x[weight_size];
+    for(size_t i = 0; i < data_size; i++) {
+        memcpy(cur_x, &x[i * weight_size], weight_size * sizeof(float));
         produce_vector(cur_x, weight_size, v[i]);
         add_to_vector(w, cur_x, weight_size);
     }
@@ -179,8 +180,8 @@ int SVM::fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size,
     return 0;
 }
 
-double SVM::predict(double* x) {
-    double res = 0;
+float SVM::predict(float* x) {
+    float res = 0;
     //for(int i = 0; i < data_size; i++)
       //  res += v[i] * this->kernel(x, this->x[i], weight_size);
     res = dot(x, w, weight_size);

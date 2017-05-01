@@ -12,7 +12,7 @@
 class MnistDataClassifier {
 private:
     size_t number_sizes[10] = {0};
-    double* train_images_[10];
+    float* train_images_[10];
     SVM*** svm_classes = NULL;
 public:
     MnistDataLoader mdl;
@@ -20,11 +20,11 @@ public:
                          const char* train_labels_filename,
                          const char* test_images_filename,
                          const char* test_labels_filename,
-                         double h,
+                         float h,
                         size_t batch_size,
                         cl_context context,
                         cl_device_id device_id);
-    void load_svm_classes(double h, size_t batch_size, cl_context context, cl_device_id device_id);
+    void load_svm_classes(float h, size_t batch_size, cl_context context, cl_device_id device_id);
     uint8_t predict(uint8_t* x);
 };
 

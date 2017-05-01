@@ -7,57 +7,34 @@
 #include <utility>
 #include <CL/cl.hpp>
 #include <CL/cl.h>
-#include <CL/opencl.h>
 
 using namespace std;
 
-void mnist_to_double(uint8_t** images, uint8_t* labels, double** x, double* y, size_t weight_size, size_t data_size) {
-    for(int i = 0; i < data_size; i++)
-        for(int j = 0; j < weight_size; j++) {
-            x[i][j] = (double) images[i][j];
-        }
-
-    for(int i = 0; i < data_size; i++)
-        if( labels[i] == 0 )
-            y[i] = -1;
-        else
-            y[i] = 1;
-}
-
-double kernel(double* x, double* b, size_t size) {
-    double s = 0;
-    while( size > 0 ) {
-        size--;
-        s += x[size] * b[size];
-    }
-
-    return s;
-}
-
 
 int main() {
+
+
+
     srand(time(NULL));
-    cl_platform_id platform_id;
-    clGetPlatformIDs(1, &platform_id, NULL);
+    cl_platform_id platform_ids[2];
+    clGetPlatformIDs(2, platform_ids, NULL);
+
+    cl_platform_id platform_id = platform_ids[0];
 
 
+    // Get the GPU device associated with the platform
 
-    const char* source = "__kernel void square(__global float* input, __global float* output, int N)\n"
-            "{\n"
-            "    int i = get_global_id(0);\n"
-            "    if ( i < N )\n"
-            "       output[i] = input[i] * input[i];\n"
-            "N = 0;\n"
-            "}\n";
-
-    // Get the first GPU device associated with the platform
-    cl_device_id device_id;
-    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, NULL);
+    cl_device_id device_ids[2];
+    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 2, device_ids, NULL);
+    cl_device_id& device_id = device_ids[0];
+    char info[1024];
+    clGetDeviceInfo(device_id, CL_DEVICE_NAME, 1024, info, NULL);
+    cout << info << endl;
 
     cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, NULL);
 
-    MnistDataClassifier mdc("/home/svmfan/MNIST Data/images.data", "/home/svmfan/MNIST Data/labels.data",
-                                      "/home/svmfan/MNIST Data/test-images.data", "/home/svmfan/MNIST Data/test-labels.data",
+    MnistDataClassifier mdc("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
+                                      "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data",
                             0.1, 1000, context, device_id);
 
 
@@ -67,7 +44,6 @@ int main() {
     size_t test_data_size = mdc.mdl.get_test_data_size();
     size_t correct_count = 0;
     correct_count = 0;
-#pragma omp parallel for
     for(size_t i = 0; i < test_data_size; i++) {
         if( mdc.predict(&images[i * mdc.mdl.get_weight_size()]) == labels[i] )
             correct_count++;
@@ -77,17 +53,11 @@ int main() {
     cout << correct_count << "/" << test_data_size << endl;
 
 
-
-#if defined(_OPENMP)
-    cout << "hello";
-
-#endif
-
     return 0;
 }
 
 
-
+/*
 
 int main2() {
     cl_platform_id platform_id;
@@ -105,7 +75,7 @@ int main2() {
 
     // Get the first GPU device associated with the platform
     cl_device_id device_id;
-    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, NULL);
+    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 2, &device_id, NULL);
 
     cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, NULL);
 
@@ -132,7 +102,7 @@ int main2() {
         a[i] = rand() % 1000;
 
 
-    cl_command_queue cmd_queue = clCreateCommandQueueWithProperties(context, device_id, 0, NULL);
+    cl_command_queue cmd_queue = clCreateCommandQueue(context, device_id, 0, NULL);
     cl_mem a_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, sizeof(cl_float) * n, a, NULL);
     cl_mem b_buffer = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_float) * n, NULL, NULL);
 
@@ -149,11 +119,7 @@ int main2() {
 
     begin = clock();
     //err = clEnqueueWriteBuffer(cmd_queue, a_buffer, CL_FALSE, 0, n, a, NULL, NULL, NULL);
-    if (err != CL_SUCCESS )
-        cout << "BAD" << endl;
     err = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a_buffer);
-    if (err != CL_SUCCESS )
-        cout << "BAD" << endl;
     clSetKernelArg(kernel, 1, sizeof(cl_mem), &b_buffer);
     clSetKernelArg(kernel, 2, sizeof(int), (void *)&n);
 
@@ -172,4 +138,4 @@ int main2() {
         b[i] = a[i] * a[i];
     cout << (clock() - begin) << endl;
     cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
-}
+}*/

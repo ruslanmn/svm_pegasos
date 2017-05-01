@@ -52,7 +52,7 @@ uint8_t* MnistDataLoader::load_images(const char* images_filename, uint32_t* siz
 
 	fclose(images_file);
 
-    for(int i = 0; i < imgs_size; i++)
+    for(size_t i = 0; i < imgs_size; i++)
             if(images_data[i] != 0)
                 images_data[i] = 1;
 

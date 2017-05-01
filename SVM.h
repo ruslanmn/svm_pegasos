@@ -11,19 +11,19 @@
 
 class SVM {
     cl_uint data_size, weight_size;
-    double* v = NULL;
-    cl_double* x = NULL;
-    double* w;
+    float* v = NULL;
+    cl_float* x = NULL;
+    float* w;
 
     cl_context context;
     cl_device_id device_id;
 
     void free_memory();
-    void set(cl_double *x, uint weight_size, uint data_size);
+    void set(cl_float *x, uint weight_size, uint data_size);
 public:
     SVM(cl_context context, cl_device_id device_id);
-    int fit(cl_double* x, cl_uint weight_size, cl_double* y, cl_uint data_size, cl_double h, cl_uint T);
-    double predict(double* x);
+    int fit(cl_float* x, cl_uint weight_size, cl_float* y, cl_uint data_size, cl_float h, cl_uint T);
+    float predict(float* x);
     ~SVM();
 
 
