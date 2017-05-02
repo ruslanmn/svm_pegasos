@@ -1,13 +1,13 @@
-#include <cstdint>
+#include <stdint.h>
 #include <cstdlib>
 #include <cstdio>
 //
 // Created by svmfan on 3/25/17.
 //
 
-void flip(uint8_t* data, size_t size) {
-    for(size_t off = 0; off < size / 2; off++) {
-        size_t twin = size - off - 1;
+void flip(uint8_t* data, unsigned int size) {
+    for(unsigned int off = 0; off < size / 2; off++) {
+        unsigned int twin = size - off - 1;
         data[off] ^= data[twin];
         data[twin] ^= data[off];
         data[off] ^= data[twin];

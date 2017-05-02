@@ -48,10 +48,10 @@ RM = /home/kmeansfan/clion-2016.3.4/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kmeansfan/CLionProjects/svm_opencl
+CMAKE_SOURCE_DIR = /home/kmeansfan/CLionProjects/svm_cuda
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kmeansfan/CLionProjects/svm_opencl/cmake-build-debug
+CMAKE_BINARY_DIR = /home/kmeansfan/CLionProjects/svm_cuda/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kmeansfan/CLionProjects/svm_opencl/cmake-build-debug/CMakeFiles /home/kmeansfan/CLionProjects/svm_opencl/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kmeansfan/CLionProjects/svm_cuda/cmake-build-debug/CMakeFiles /home/kmeansfan/CLionProjects/svm_cuda/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kmeansfan/CLionProjects/svm_opencl/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kmeansfan/CLionProjects/svm_cuda/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,152 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named svm
+# Target rules for targets named svm_cuda
 
 # Build rule for target.
-svm: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 svm
-.PHONY : svm
+svm_cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 svm_cuda
+.PHONY : svm_cuda
 
 # fast build rule for target.
-svm/fast:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/build
-.PHONY : svm/fast
-
-SVM.o: SVM.cpp.o
-
-.PHONY : SVM.o
-
-# target to build an object file
-SVM.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/SVM.cpp.o
-.PHONY : SVM.cpp.o
-
-SVM.i: SVM.cpp.i
-
-.PHONY : SVM.i
-
-# target to preprocess a source file
-SVM.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/SVM.cpp.i
-.PHONY : SVM.cpp.i
-
-SVM.s: SVM.cpp.s
-
-.PHONY : SVM.s
-
-# target to generate assembly for a file
-SVM.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/SVM.cpp.s
-.PHONY : SVM.cpp.s
-
-byteorder_helper.o: byteorder_helper.cpp.o
-
-.PHONY : byteorder_helper.o
-
-# target to build an object file
-byteorder_helper.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.o
-.PHONY : byteorder_helper.cpp.o
-
-byteorder_helper.i: byteorder_helper.cpp.i
-
-.PHONY : byteorder_helper.i
-
-# target to preprocess a source file
-byteorder_helper.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.i
-.PHONY : byteorder_helper.cpp.i
-
-byteorder_helper.s: byteorder_helper.cpp.s
-
-.PHONY : byteorder_helper.s
-
-# target to generate assembly for a file
-byteorder_helper.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/byteorder_helper.cpp.s
-.PHONY : byteorder_helper.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-mnist_data_classifier.o: mnist_data_classifier.cpp.o
-
-.PHONY : mnist_data_classifier.o
-
-# target to build an object file
-mnist_data_classifier.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_classifier.cpp.o
-.PHONY : mnist_data_classifier.cpp.o
-
-mnist_data_classifier.i: mnist_data_classifier.cpp.i
-
-.PHONY : mnist_data_classifier.i
-
-# target to preprocess a source file
-mnist_data_classifier.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_classifier.cpp.i
-.PHONY : mnist_data_classifier.cpp.i
-
-mnist_data_classifier.s: mnist_data_classifier.cpp.s
-
-.PHONY : mnist_data_classifier.s
-
-# target to generate assembly for a file
-mnist_data_classifier.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_classifier.cpp.s
-.PHONY : mnist_data_classifier.cpp.s
-
-mnist_data_loader.o: mnist_data_loader.cpp.o
-
-.PHONY : mnist_data_loader.o
-
-# target to build an object file
-mnist_data_loader.cpp.o:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.o
-.PHONY : mnist_data_loader.cpp.o
-
-mnist_data_loader.i: mnist_data_loader.cpp.i
-
-.PHONY : mnist_data_loader.i
-
-# target to preprocess a source file
-mnist_data_loader.cpp.i:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.i
-.PHONY : mnist_data_loader.cpp.i
-
-mnist_data_loader.s: mnist_data_loader.cpp.s
-
-.PHONY : mnist_data_loader.s
-
-# target to generate assembly for a file
-mnist_data_loader.cpp.s:
-	$(MAKE) -f CMakeFiles/svm.dir/build.make CMakeFiles/svm.dir/mnist_data_loader.cpp.s
-.PHONY : mnist_data_loader.cpp.s
+svm_cuda/fast:
+	$(MAKE) -f CMakeFiles/svm_cuda.dir/build.make CMakeFiles/svm_cuda.dir/build
+.PHONY : svm_cuda/fast
 
 # Help Target
 help:
@@ -266,22 +131,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... svm"
-	@echo "... SVM.o"
-	@echo "... SVM.i"
-	@echo "... SVM.s"
-	@echo "... byteorder_helper.o"
-	@echo "... byteorder_helper.i"
-	@echo "... byteorder_helper.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... mnist_data_classifier.o"
-	@echo "... mnist_data_classifier.i"
-	@echo "... mnist_data_classifier.s"
-	@echo "... mnist_data_loader.o"
-	@echo "... mnist_data_loader.i"
-	@echo "... mnist_data_loader.s"
+	@echo "... svm_cuda"
 .PHONY : help
 
 

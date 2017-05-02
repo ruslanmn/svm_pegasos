@@ -1,4 +1,4 @@
-# Install script for directory: /home/kmeansfan/CLionProjects/svm_opencl
+# Install script for directory: /home/kmeansfan/CLionProjects/svm_cuda
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/kmeansfan/CLionProjects/svm_opencl/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/kmeansfan/CLionProjects/svm_cuda/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
