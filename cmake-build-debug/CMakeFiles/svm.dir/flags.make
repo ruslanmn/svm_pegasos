@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wextra -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/cuda-8.0/include/CL 
+CXX_INCLUDES = -I/opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include 
 

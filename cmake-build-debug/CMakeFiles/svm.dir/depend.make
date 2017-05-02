@@ -3,6 +3,8 @@
 
 CMakeFiles/svm.dir/SVM.cpp.o: ../SVM.cpp
 CMakeFiles/svm.dir/SVM.cpp.o: ../SVM.h
+CMakeFiles/svm.dir/SVM.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl.h
+CMakeFiles/svm.dir/SVM.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_platform.h
 
 CMakeFiles/svm.dir/byteorder_helper.cpp.o: ../byteorder_helper.cpp
 
@@ -10,11 +12,20 @@ CMakeFiles/svm.dir/main.cpp.o: ../SVM.h
 CMakeFiles/svm.dir/main.cpp.o: ../main.cpp
 CMakeFiles/svm.dir/main.cpp.o: ../mnist_data_classifier.h
 CMakeFiles/svm.dir/main.cpp.o: ../mnist_data_loader.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl.hpp
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_ext.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_gl.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_gl_ext.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_platform.h
+CMakeFiles/svm.dir/main.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/opencl.h
 
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../SVM.h
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../mnist_data_classifier.cpp
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../mnist_data_classifier.h
 CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: ../mnist_data_loader.h
+CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl.h
+CMakeFiles/svm.dir/mnist_data_classifier.cpp.o: /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include/CL/cl_platform.h
 
 CMakeFiles/svm.dir/mnist_data_loader.cpp.o: ../byteorder_helper.h
 CMakeFiles/svm.dir/mnist_data_loader.cpp.o: ../mnist_data_loader.cpp

@@ -1,5 +1,5 @@
-double kernel_func(__global double* x, __global double* b, size_t size) {
-    double s = 0;
+float kernel_func(__global float* x, __global float* b, size_t size) {
+    float s = 0;
     while( size > 0 ) {
         size--;
         s += x[size] * b[size];
@@ -9,17 +9,17 @@ double kernel_func(__global double* x, __global double* b, size_t size) {
 }
 
 
-__kernel void fit(__global uint* indices, uint T, __global uint* a, __global double* x, uint weight_size, __global double* y, uint data_size, double h) {
+__kernel void fit(__global uint* indices, uint T, __global uint* a, __global float* x, uint weight_size, __global float* y, uint data_size, float h) {
+    printf("enter");
     uint id = get_global_id(0);
-
     if (id >= T)
         return;
 
     uint t =  id + 1;
     uint i = indices[id];
 
-    double q = 1/(h*t);
-    double s = 0;
+    float q = 1/(h*t);
+    float s = 0;
 
     for(int j = 0; j < data_size; j++)
      if( j != i ) {

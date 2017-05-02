@@ -10,28 +10,65 @@
 
 using namespace std;
 
+void check_errors(cl_int err) {
+    if (err != CL_SUCCESS) {
+        cerr << err << endl;
+        exit(-1);
+    }
+}
+
+int print_train_images() {
+    MnistDataLoader mld;
+    mld.load_mnist_data("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
+                        "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data");
+    uint8_t* labels = mld.get_train_labels();
+    uint8_t* images = mld.get_train_images();
+    int a;
+    for(int i = 0; i < mld.get_train_data_size(); i++) {
+        for(int y = 0; y < 28; y++) {
+            for(int x = 0; x < 28; x++) {
+                if (images[i * mld.get_weight_size() + y*28 + x] == 0)
+                    cout << " ";
+                else
+                    cout << "*";
+            }
+            cout << endl;
+        }
+        cout << (int)labels[i] << endl;
+        cin >> a;
+
+    }
+    return 0;
+}
 
 int main() {
 
 
 
     srand(time(NULL));
-    cl_platform_id platform_ids[2];
-    clGetPlatformIDs(2, platform_ids, NULL);
+    cl_platform_id platform_ids[3];
+    clGetPlatformIDs(3, platform_ids, NULL);
 
     cl_platform_id platform_id = platform_ids[0];
 
+    char info[1024];
+    cl_int err = clGetPlatformInfo(platform_id, CL_PLATFORM_NAME, 512, info, NULL);
+    check_errors(err);
+    cout << info << endl;
 
     // Get the GPU device associated with the platform
 
     cl_device_id device_ids[2];
-    clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 2, device_ids, NULL);
+    err = clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_ALL, 2, device_ids, NULL);
+    check_errors(err);
     cl_device_id& device_id = device_ids[0];
-    char info[1024];
-    clGetDeviceInfo(device_id, CL_DEVICE_NAME, 1024, info, NULL);
+
+    err = clGetDeviceInfo(device_id, CL_DEVICE_NAME, 512, info, NULL);
+    check_errors(err);
     cout << info << endl;
 
-    cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, NULL);
+    cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &err);
+    check_errors(err);
 
     MnistDataClassifier mdc("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
                                       "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data",
@@ -57,9 +94,8 @@ int main() {
 }
 
 
-/*
 
-int main2() {
+int main_opencl_test() {
     cl_platform_id platform_id;
     clGetPlatformIDs(1, &platform_id, NULL);
 
@@ -119,7 +155,7 @@ int main2() {
 
     begin = clock();
     //err = clEnqueueWriteBuffer(cmd_queue, a_buffer, CL_FALSE, 0, n, a, NULL, NULL, NULL);
-    err = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&a_buffer);
+    err = clSetKernelArg(kernel, 0, sizeof(cl_mem), &a_buffer);
     clSetKernelArg(kernel, 1, sizeof(cl_mem), &b_buffer);
     clSetKernelArg(kernel, 2, sizeof(int), (void *)&n);
 
@@ -134,8 +170,8 @@ int main2() {
     cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
 
     begin = clock();
-    for(int i = 0; i < n; i++)
+  /*  for(int i = 0; i < n; i++)
         b[i] = a[i] * a[i];
     cout << (clock() - begin) << endl;
-    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
-}*/
+    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;*/
+}

@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+#define SIZE 10000
+
 using namespace std;
 
 void MnistDataLoader::load_mnist_data(const char* train_images_filename,
@@ -43,7 +45,7 @@ uint8_t* MnistDataLoader::load_images(const char* images_filename, uint32_t* siz
     fread_uint32_with_flip( &columns_size, images_file);
 
     weight_size_ = (rows_size*columns_size);
-
+    *size = SIZE;
     size_t imgs_size = *size * weight_size_;
     size_t imgs_byte_size = imgs_size * sizeof(uint8_t);
 
@@ -67,6 +69,7 @@ uint8_t* MnistDataLoader::load_labels(const char* labels_filename , uint32_t* si
 
     fread_uint32_with_flip( &magic, labels_file);
     fread_uint32_with_flip( size, labels_file);
+    *size = SIZE;
     uint8_t* labels_data = (uint8_t*) malloc((*size) * sizeof(uint8_t));
 
     fread( labels_data, sizeof(uint8_t) * (*size), 1, labels_file);
