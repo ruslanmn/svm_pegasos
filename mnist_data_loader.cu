@@ -1,12 +1,12 @@
 #include <cstdio>
-#include <cstdint>
+#include <stdint.h>
 #include <cstdlib>
 #include "mnist_data_loader.h"
 #include "byteorder_helper.h"
 
 #include <iostream>
 
-#define SIZE 10000
+#define SIZE 1000
 
 using namespace std;
 
@@ -46,15 +46,15 @@ uint8_t* MnistDataLoader::load_images(const char* images_filename, uint32_t* siz
 
     weight_size_ = (rows_size*columns_size);
     *size = SIZE;
-    size_t imgs_size = *size * weight_size_;
-    size_t imgs_byte_size = imgs_size * sizeof(uint8_t);
+    unsigned int imgs_size = *size * weight_size_;
+    unsigned int imgs_byte_size = imgs_size * sizeof(uint8_t);
 
 	uint8_t* images_data = (uint8_t*) malloc(imgs_byte_size);
     fread( images_data, imgs_byte_size, 1, images_file);
 
 	fclose(images_file);
 
-    for(size_t i = 0; i < imgs_size; i++)
+    for(unsigned int i = 0; i < imgs_size; i++)
             if(images_data[i] != 0)
                 images_data[i] = 1;
 
@@ -78,19 +78,19 @@ uint8_t* MnistDataLoader::load_labels(const char* labels_filename , uint32_t* si
     return labels_data;
 }
 
-size_t MnistDataLoader::get_weight_size() const {
+unsigned int MnistDataLoader::get_weight_size() const {
     return weight_size_;
 }
 
-size_t MnistDataLoader::get_train_data_size() const {
+unsigned int MnistDataLoader::get_train_data_size() const {
     return train_data_size_;
 }
 
-size_t MnistDataLoader::get_test_data_size() const {
+unsigned int MnistDataLoader::get_test_data_size() const {
     return test_data_size_;
 }
 
-void MnistDataLoader::set_data_size(size_t data_size) {
+void MnistDataLoader::set_data_size(unsigned int data_size) {
     this->train_data_size_ = data_size;
 }
 

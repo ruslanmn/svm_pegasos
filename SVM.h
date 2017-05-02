@@ -6,23 +6,20 @@
 #define SVM_SVM_H
 
 #include <cstdlib>
-#include <cstdint>
-#include <CL/cl.h>
+#include <stdint.h>
 
 class SVM {
-    cl_uint data_size, weight_size;
-    float* v = NULL;
-    cl_float* x = NULL;
+    unsigned int data_size, weight_size;
+    float* v;
+    float* x;
     float* w;
 
-    cl_context context;
-    cl_device_id device_id;
 
     void free_memory();
-    void set(cl_float *x, uint weight_size, uint data_size);
+    void set(float *x, unsigned int weight_size, unsigned int data_size);
 public:
-    SVM(cl_context context, cl_device_id device_id);
-    int fit(cl_float* x, cl_uint weight_size, cl_float* y, cl_uint data_size, cl_float h, cl_uint T);
+    SVM();
+    int fit(float* x, unsigned int weight_size, float* y, unsigned int data_size, float h, unsigned int T);
     float predict(float* x);
     ~SVM();
 

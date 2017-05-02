@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wall -Wextra -g   CMakeFiles/svm.dir/main.cpp.o CMakeFiles/svm.dir/mnist_data_loader.cpp.o CMakeFiles/svm.dir/byteorder_helper.cpp.o CMakeFiles/svm.dir/SVM.cpp.o CMakeFiles/svm.dir/mnist_data_classifier.cpp.o  -o svm /opt/intel/opencl/libOpenCL.so -Wl,-rpath,/opt/intel/opencl 

@@ -1,11 +1,15 @@
 cmake_minimum_required(VERSION 3.6)
-project(svm_opencl)
+project(svm_cuda)
 
-include_directories( /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include )
-#include_directories( /usr/local/cuda/include )
-set(CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-set(SOURCE_FILES main.cpp mnist_data_loader.cpp mnist_data_loader.h byteorder_helper.cpp byteorder_helper.h SVM.cpp SVM.h mnist_data_classifier.cpp mnist_data_classifier.h)
-add_executable(svm ${SOURCE_FILES})
-target_link_libraries(svm /opt/intel/opencl/libOpenCL.so)
+find_package(CUDA REQUIRED)
+#include_directories( /opt/intel/intel-opencl-1.2-6.3.0.1904/opencl-sdk/include )
+include_directories( /usr/local/cuda-8.0/include )
+set(
+        CUDA_NVCC_FLAGS
+        ${CUDA_NVCC_FLAGS};
+        -gencode arch=compute_20,code=sm_21
+)
+set(SOURCE_FILES main.cu mnist_data_loader.cu mnist_data_loader.h byteorder_helper.cu byteorder_helper.h SVM.cu SVM.h mnist_data_classifier.cu mnist_data_classifier.h)
+cuda_add_executable(svm_cuda ${SOURCE_FILES})
+#target_link_libraries(svm_cuda /opt/intel/opencl/libOpenCL.so)
 #target_link_libraries(svm /usr/local/cuda/lib64/libOpenCL.so )

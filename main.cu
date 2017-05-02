@@ -4,18 +4,9 @@
 #include "mnist_data_classifier.h"
 #include <omp.h>
 
-#include <utility>
-#include <CL/cl.hpp>
-#include <CL/cl.h>
 
 using namespace std;
 
-void check_errors(cl_int err) {
-    if (err != CL_SUCCESS) {
-        cerr << err << endl;
-        exit(-1);
-    }
-}
 
 int print_train_images() {
     MnistDataLoader mld;
@@ -43,45 +34,37 @@ int print_train_images() {
 
 int main() {
 
+    int nDevices;
+
+    cudaGetDeviceCount(&nDevices);
+    for (int i = 0; i < 1; i++) {
+        cudaDeviceProp prop;
+        cudaGetDeviceProperties(&prop, i);
+        printf("Device Number: %d\n", i);
+        printf("  Device name: %s\n", prop.name);
+        printf("  Memory Clock Rate (KHz): %d\n",
+               prop.memoryClockRate);
+        printf("  Memory Bus Width (bits): %d\n",
+               prop.memoryBusWidth);
+        printf("  Peak Memory Bandwidth (GB/s): %f\n\n",
+               2.0*prop.memoryClockRate*(prop.memoryBusWidth/8)/1.0e6);
+    }
 
 
     srand(time(NULL));
-    cl_platform_id platform_ids[3];
-    clGetPlatformIDs(3, platform_ids, NULL);
-
-    cl_platform_id platform_id = platform_ids[0];
-
-    char info[1024];
-    cl_int err = clGetPlatformInfo(platform_id, CL_PLATFORM_NAME, 512, info, NULL);
-    check_errors(err);
-    cout << info << endl;
-
-    // Get the GPU device associated with the platform
-
-    cl_device_id device_ids[2];
-    err = clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_ALL, 2, device_ids, NULL);
-    check_errors(err);
-    cl_device_id& device_id = device_ids[0];
-
-    err = clGetDeviceInfo(device_id, CL_DEVICE_NAME, 512, info, NULL);
-    check_errors(err);
-    cout << info << endl;
-
-    cl_context context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &err);
-    check_errors(err);
 
     MnistDataClassifier mdc("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
                                       "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data",
-                            0.1, 1000, context, device_id);
+                            0.1, 10);
 
 
 
     uint8_t* images = mdc.mdl.get_test_images();
     uint8_t* labels = mdc.mdl.get_test_labels();
-    size_t test_data_size = mdc.mdl.get_test_data_size();
-    size_t correct_count = 0;
+    unsigned int test_data_size = mdc.mdl.get_test_data_size();
+    unsigned int correct_count = 0;
     correct_count = 0;
-    for(size_t i = 0; i < test_data_size; i++) {
+    for(unsigned int i = 0; i < test_data_size; i++) {
         if( mdc.predict(&images[i * mdc.mdl.get_weight_size()]) == labels[i] )
             correct_count++;
         cout << i << endl;
@@ -92,9 +75,7 @@ int main() {
 
     return 0;
 }
-
-
-
+/*
 int main_opencl_test() {
     cl_platform_id platform_id;
     clGetPlatformIDs(1, &platform_id, NULL);
@@ -130,7 +111,7 @@ int main_opencl_test() {
 
 
 
-    size_t n = 99999999;
+    unsigned int n = 99999999;
     cl_float* a = (cl_float*) malloc(sizeof(cl_float) * n);
     cl_float* b = (cl_float*) malloc(sizeof(cl_float) * n);
 
@@ -148,9 +129,9 @@ int main_opencl_test() {
 
     clock_t begin;
 
-    size_t localWorkSize = 32;
-    size_t numWorkGroups = (n + localWorkSize - 1) / localWorkSize;
-    size_t globalWorkSize = numWorkGroups * localWorkSize;
+    unsigned int localWorkSize = 32;
+    unsigned int numWorkGroups = (n + localWorkSize - 1) / localWorkSize;
+    unsigned int globalWorkSize = numWorkGroups * localWorkSize;
 
 
     begin = clock();
@@ -173,5 +154,5 @@ int main_opencl_test() {
   /*  for(int i = 0; i < n; i++)
         b[i] = a[i] * a[i];
     cout << (clock() - begin) << endl;
-    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;*/
-}
+    cout << "b[24] = " << b[n-1] << ", a[24] = " << a[n-1] << endl;
+}*/
