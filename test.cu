@@ -30,7 +30,7 @@ void generateMatrix(float* a, int n) {
 		a[i] = rand();
 }
 
-int main() {
+int matrix_mulr() {
 	srand(time(0));
 	int n = 250;
     size_t size = n*n*sizeof(float);

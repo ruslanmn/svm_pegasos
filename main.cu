@@ -55,7 +55,7 @@ int main() {
 
     MnistDataClassifier mdc("/home/kmeansfan/MNIST Data/images.data", "/home/kmeansfan/MNIST Data/labels.data",
                                       "/home/kmeansfan/MNIST Data/test-images.data", "/home/kmeansfan/MNIST Data/test-labels.data",
-                            0.1, 10);
+                            1.67 * 0.00001, 1000);
 
 
 
@@ -67,10 +67,10 @@ int main() {
     for(unsigned int i = 0; i < test_data_size; i++) {
         if( mdc.predict(&images[i * mdc.mdl.get_weight_size()]) == labels[i] )
             correct_count++;
-        cout << i << endl;
+        cout << correct_count << "/" << (i+1) << endl;
     }
 
-    cout << correct_count << "/" << test_data_size << endl;
+
 
 
     return 0;

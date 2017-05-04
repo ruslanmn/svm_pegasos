@@ -15,12 +15,19 @@ class SVM {
     float* w;
 
 
+
     void free_memory();
     void set(float *x, unsigned int weight_size, unsigned int data_size);
 public:
+    static float* d_x;
+    static float* d_y;
+    static unsigned int* d_a;
+    static void loadCuda(unsigned int max_data_size, unsigned int weight_size);
     SVM();
     int fit(float* x, unsigned int weight_size, float* y, unsigned int data_size, float h, unsigned int T);
     float predict(float* x);
+    void save(const char* filename);
+    bool load(const char* filename);
     ~SVM();
 
 

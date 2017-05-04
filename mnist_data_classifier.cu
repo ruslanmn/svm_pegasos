@@ -54,9 +54,11 @@ MnistDataClassifier::MnistDataClassifier(const char* train_images_filename,
 
 
 void MnistDataClassifier::load_svm_classes(float h, unsigned int batch_size) {
+    SVM::loadCuda(mdl.get_train_data_size(), mdl.get_weight_size());
     int n = 10;
     svm_classes = new SVM**[n];
     unsigned int weight_size = mdl.get_weight_size();
+    char filename[] = "00.svmdata";
     for(int i = 0; i < n; i++) {
         svm_classes[i] = new SVM*[n];
         for(int j = 0; j < n ; j++) {
@@ -75,11 +77,25 @@ void MnistDataClassifier::load_svm_classes(float h, unsigned int batch_size) {
                 for(unsigned int l = number_sizes[i]; l < size; l++)
                     y[l] = -1;
 
-                cout << "fitting " << i << "-" << j << endl;
-                svm_classes[i][j]->fit(x, weight_size, y, size, h, batch_size);
-                cout << "finished" << endl;
+                filename[0] = i + '0';
+                filename[1] = j + '0';
+                cout << "Trying to load " << '\'' << filename << "\'...";
+                cout.flush();
+                if(!svm_classes[i][j]->load(filename)) {
+                    cout << " Not found. Fitting SVM[" << i << "][" << j << "]...";
+                    cout.flush();
+                    svm_classes[i][j]->fit(x, weight_size, y, size, h, batch_size);
+                    cout << " Finished and ";
+                    cout.flush();
+                    svm_classes[i][j]->save(filename);
+                    cout << "saved." << endl;
+                    cout.flush();
+                }
+                else
+                    cout << " Loaded." << endl;
 
-                free(x);
+
+
             }
 
         }
